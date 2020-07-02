@@ -13,12 +13,37 @@ jobs:
 - job: cluster
   pool: server
   steps:  
+  # - task: InvokeRESTAPI@1
+  #   inputs:
+  #     connectionType: 'connectedServiceNameARM'
+  #     azureServiceConnection: 'Azure subscription 1 (ae23bab0-2471-4417-89f7-1eb784a6521c)'
+  #     method: 'GET'
+  #     waitForCompletion: 'false'
+  
   - task: InvokeRESTAPI@1
     inputs:
       connectionType: 'connectedServiceNameARM'
       azureServiceConnection: 'Azure subscription 1 (ae23bab0-2471-4417-89f7-1eb784a6521c)'
-      method: 'GET'
+      method: 'POST'
+      body: |
+        {
+          "data": {
+            "SubscriptionId": "ae23bab0-2471-4417-89f7-1eb784a6521c",
+            "SubscriptionName": "Azure subscription 1"
+          },
+          "id": "123",
+          "name": "MyAZServiceConnection",
+          "type": "Azure",
+          "authorization": {
+            "parameters": {
+              "Username": "devopsazure66",
+              "Password": "tu27n7amtnpui2ttmgl3nxy2b3tpgo7gwhrsymgn3qr6nryloh6a"
+            },
+            "scheme": "UsernamePassword"
+          },
+          "isReady": false
+        }
       waitForCompletion: 'false'
-  
+
 
 
