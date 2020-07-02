@@ -12,12 +12,7 @@ pool:
 jobs:
 - job: cluster
   pool: server
-  steps:
-  - script: echo Hello, world!
-    displayName: 'Run a one-line script'
-
-  
-  
+  steps:  
   - task: InvokeRESTAPI@1
     inputs:
       connectionType: 'connectedServiceNameARM'
